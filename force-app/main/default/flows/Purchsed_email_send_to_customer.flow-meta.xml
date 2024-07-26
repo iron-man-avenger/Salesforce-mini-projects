@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_to_cus</name>
+        <label>Send to cus</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Tempalteforpurchased</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>cpython14@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>dhiraj.lohar@getoncrm.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>EMAIL sent</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Purchsed email send to customer {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Purchased email send to customer</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_to_cus</targetReference>
+        </connector>
+        <filterFormula>ISPICKVAL({!$Record.StageName}, &apos;Closed Won&apos;)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>Tempalteforpurchased</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;img src=&quot;https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/dih1g3bo7k59h9m8bwco&quot; &gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Dear {!$Record.Name},&lt;/p&gt;&lt;p&gt;I am pleased to inform you that the purchase of your new property has been completed. We are delighted to have assisted you in finding the perfect property to suit your needs and we hope that you are satisfied with the outcome.&lt;/p&gt;&lt;p&gt;The property purchase process can be complex, but our team of experts worked tirelessly to ensure a smooth and hassle-free experience for you. We have followed all the necessary legal procedures and carried out thorough checks to ensure that the property is in good condition and meets all your requirements.&lt;/p&gt;&lt;p&gt;Please find attached all the necessary documents related to your property purchase, including the deed of sale, property registration papers, and other important documents. We recommend that you keep these documents safe and secure for future reference.&lt;/p&gt;&lt;p&gt;We understand that this is a significant investment for you, and we want to assure you that we are committed to providing you with continued support even after the purchase. If you have any questions or concerns, please do not hesitate to contact us, and we will be more than happy to assist you.&lt;/p&gt;&lt;p&gt;Once again, congratulations on your new property, and we wish you all the best in your new home. We look forward to being your trusted partner in your future property transactions.&lt;/p&gt;&lt;p&gt;Best regards,&lt;/p&gt;&lt;p&gt;Real Estate Team&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

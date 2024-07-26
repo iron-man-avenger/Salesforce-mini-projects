@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="GROHE Records">
+        <lightning-input label="Search" value={searchTerm} onchange={handleSearchChange}></lightning-input>
+         
+        <lightning-datatable
+            key-field="Id"
+            data={groheRecords.data}
+            columns={columns}
+            selected-rows={selectedRows}
+        ></lightning-datatable>
+        <lightning-button label="Generate PDF" title="Generate PDF" onclick={generatePDF}></lightning-button>
+    </lightning-card>
+</template> 
+
+
+
